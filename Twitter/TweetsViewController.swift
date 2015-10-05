@@ -40,6 +40,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func fetchTweets() {
+        /**
         if User.currentUser == nil {
             TwitterClient.sharedInstance.loginWithCompletion() {
                 (user: User?, error: NSError?) in
@@ -58,14 +59,13 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
                 self.refreshControl.endRefreshing()
             })
         }
+        **/
         
-        /**
         TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: {(tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
         })
-        **/
         
     }
     
