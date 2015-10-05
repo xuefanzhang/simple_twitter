@@ -280,7 +280,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tweet" id="peM-m1-x9M">
-                        <barButtonItem key="leftBarButtonItem" title="Home" id="gx3-3H-5hf"/>
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="gx3-3H-5hf">
+                            <connections>
+                                <segue destination="2S9-af-8Qr" kind="modal" identifier="homeTweetsSegue" id="TDC-oo-OXI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="contentLabel" destination="EmF-CH-g80" id="T3b-kC-h5p"/>
@@ -351,6 +355,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="f4I-Xx-y6J"/>
+        <segue reference="TDC-oo-OXI"/>
     </inferredMetricsTieBreakers>
 </document>
