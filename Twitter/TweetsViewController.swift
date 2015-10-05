@@ -23,6 +23,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
+        fetchTweets()
+        
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "fetchTweets", forControlEvents: UIControlEvents.ValueChanged)
         
@@ -30,7 +32,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         dummyTableVC.tableView = tableView
         dummyTableVC.refreshControl = refreshControl
         
-        fetchTweets()
     }
 
     override func didReceiveMemoryWarning() {
