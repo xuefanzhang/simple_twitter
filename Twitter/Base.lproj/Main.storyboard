@@ -205,7 +205,7 @@
                     <navigationItem key="navigationItem" id="xSm-I9-pvz">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Tco-JR-8OW">
                             <connections>
-                                <segue destination="2S9-af-8Qr" kind="push" identifier="cancelNewTweetSegue" id="8S3-7a-qwd"/>
+                                <segue destination="2S9-af-8Qr" kind="modal" identifier="cancelNewTweetSegue" id="zL9-kJ-vf4"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Tweet" id="cic-HF-IFQ">
@@ -297,10 +297,10 @@
             </objects>
             <point key="canvasLocation" x="2590" y="232"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--TweetsNavigationController-->
         <scene sceneID="ZYy-C7-vAC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2S9-af-8Qr" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="TweetsNavigationController" storyboardIdentifier="TweetsNavigationController" title="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="2S9-af-8Qr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="aqE-PN-JAS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TUH-vI-GKQ">
@@ -355,6 +355,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TDC-oo-OXI"/>
+        <segue reference="f4I-Xx-y6J"/>
     </inferredMetricsTieBreakers>
 </document>

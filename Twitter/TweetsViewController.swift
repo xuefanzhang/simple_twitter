@@ -23,8 +23,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
-        fetchTweets()
-        
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "fetchTweets", forControlEvents: UIControlEvents.ValueChanged)
         
@@ -32,6 +30,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         dummyTableVC.tableView = tableView
         dummyTableVC.refreshControl = refreshControl
         
+        fetchTweets()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,11 +40,33 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func fetchTweets() {
+        if User.currentUser == nil {
+            TwitterClient.sharedInstance.loginWithCompletion() {
+                (user: User?, error: NSError?) in
+                if user != nil {
+                    TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: {(tweets, error) -> () in
+                        self.tweets = tweets
+                        self.tableView.reloadData()
+                        self.refreshControl.endRefreshing()
+                    })
+                }
+            }
+        } else {
+            TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: {(tweets, error) -> () in
+                self.tweets = tweets
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            })
+        }
+        
+        /**
         TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: {(tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
         })
+        **/
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
