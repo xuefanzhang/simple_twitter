@@ -67,4 +67,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         User.currentUser?.logout()
     }
 
+    
+    @IBAction func onNew(sender: AnyObject) {
+        self.performSegueWithIdentifier("newTweetSegue", sender: self)
+    }
 }

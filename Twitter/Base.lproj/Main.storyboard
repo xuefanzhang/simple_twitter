@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -75,23 +76,23 @@
                                                         <constraint firstAttribute="width" constant="67" id="zpT-dI-DS3"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Xuefan Zhang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUH-vG-AvY">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xuefan Zhang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUH-vG-AvY">
                                                     <rect key="frame" x="81" y="15" width="96" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tj1-9C-xzQ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yesterday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idk-wt-6Zm">
+                                                    <rect key="frame" x="252" y="16" width="60" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.45397332699999998" green="0.45397332699999998" blue="0.45397332699999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tj1-9C-xzQ">
                                                     <rect key="frame" x="81" y="40" width="231" height="73.5"/>
                                                     <string key="text">text text texttext text texttext text texttext text texttext text texttext text texttext text texttext text texttext text texttext text texttext text texttext text texttext text texttext text texttext text texttext text text</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Yesterday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idk-wt-6Zm">
-                                                    <rect key="frame" x="252" y="16" width="60" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.45397332699999998" green="0.45397332699999998" blue="0.45397332699999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -99,12 +100,12 @@
                                                 <constraint firstItem="UT9-wB-QAy" firstAttribute="leading" secondItem="oHV-jB-pVZ" secondAttribute="leading" constant="8" id="0UY-FW-kn2"/>
                                                 <constraint firstItem="UT9-wB-QAy" firstAttribute="top" secondItem="oHV-jB-pVZ" secondAttribute="top" constant="15" id="1fH-6I-P1w"/>
                                                 <constraint firstItem="idk-wt-6Zm" firstAttribute="baseline" secondItem="VUH-vG-AvY" secondAttribute="baseline" id="6U5-So-phD"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="UT9-wB-QAy" secondAttribute="bottom" constant="10" id="CAo-1u-j0u"/>
                                                 <constraint firstItem="tj1-9C-xzQ" firstAttribute="top" secondItem="idk-wt-6Zm" secondAttribute="bottom" constant="8" id="EWb-qu-vex"/>
                                                 <constraint firstAttribute="bottom" secondItem="tj1-9C-xzQ" secondAttribute="bottom" constant="29" id="GIL-te-cgy"/>
                                                 <constraint firstItem="tj1-9C-xzQ" firstAttribute="leading" secondItem="UT9-wB-QAy" secondAttribute="trailing" constant="6" id="Gie-k8-lYo"/>
                                                 <constraint firstItem="VUH-vG-AvY" firstAttribute="leading" secondItem="UT9-wB-QAy" secondAttribute="trailing" constant="6" id="cGW-9H-XgW"/>
                                                 <constraint firstAttribute="trailing" secondItem="tj1-9C-xzQ" secondAttribute="trailing" constant="8" id="ca9-43-m3J"/>
-                                                <constraint firstItem="idk-wt-6Zm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VUH-vG-AvY" secondAttribute="trailing" constant="75" id="dd0-wv-B23"/>
                                                 <constraint firstAttribute="bottom" secondItem="tj1-9C-xzQ" secondAttribute="bottom" constant="29" id="dvd-Ax-CAQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="tj1-9C-xzQ" secondAttribute="trailing" constant="8" id="lne-Ha-BKT"/>
                                                 <constraint firstItem="VUH-vG-AvY" firstAttribute="top" secondItem="oHV-jB-pVZ" secondAttribute="top" constant="15" id="nZO-ce-Bze"/>
@@ -130,7 +131,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tweets" id="SVt-0z-zWb">
-                        <barButtonItem key="leftBarButtonItem" title="New" id="56E-LH-eRn"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="3e3-kd-wbM">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xvH-6n-MWO">
+                                <rect key="frame" x="16" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="New"/>
+                                <connections>
+                                    <action selector="onNew:" destination="dw4-mj-nF4" eventType="touchUpInside" id="xVb-WL-rcB"/>
+                                    <segue destination="bv6-ab-iDo" kind="modal" identifier="newTweetSegue" id="OgL-Qc-idb"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="onNew:" destination="dw4-mj-nF4" id="XaX-1e-uAY"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="e6z-Q3-eGo">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qPL-J2-p1B">
                                 <rect key="frame" x="256" y="7" width="48" height="30"/>
@@ -153,7 +167,7 @@
         <!--NewTweetViewController-->
         <scene sceneID="5Aj-JA-lvP">
             <objects>
-                <viewController storyboardIdentifier="NewTweetViewController" title="NewTweetViewController" id="UV1-yz-ace" customClass="NewTweetViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="NewTweetViewController" storyboardIdentifier="NewTweetViewController" title="NewTweetViewController" id="UV1-yz-ace" customClass="NewTweetViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pke-Po-Z8H"/>
                         <viewControllerLayoutGuide type="bottom" id="mpV-Gl-Nok"/>
@@ -176,8 +190,15 @@
                                 <segue destination="2S9-af-8Qr" kind="push" identifier="cancelNewTweetSegue" id="8S3-7a-qwd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="cic-HF-IFQ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="cic-HF-IFQ">
+                            <connections>
+                                <action selector="onTweet:" destination="UV1-yz-ace" id="3WX-gd-3vr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="newTweetTextField" destination="NaW-a8-5oK" id="h9l-pY-SAA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Xx-h8-hlb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -207,6 +228,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bv6-ab-iDo" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Flk-uh-sK1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BBM-7W-kQ7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -222,6 +244,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="f4I-Xx-y6J"/>
+        <segue reference="8S3-7a-qwd"/>
     </inferredMetricsTieBreakers>
 </document>
