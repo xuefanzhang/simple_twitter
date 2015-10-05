@@ -63,6 +63,13 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let controller = storyboard.instantiateViewControllerWithIdentifier("TweetViewController") as! TweetViewController
+        controller.tweet = self.tweets![indexPath.row]
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
     @IBAction func onLogout(sender: AnyObject) {
         User.currentUser?.logout()
     }
