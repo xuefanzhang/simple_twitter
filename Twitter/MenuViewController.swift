@@ -12,7 +12,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var tableView: UITableView!
     
-    private var profileNavigationController: UIViewController!
+    private var profileViewController: UIViewController!
     private var tweetsNavigationController: UIViewController!
     private var mentionsNavigationController: UIViewController!
     
@@ -27,11 +27,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.delegate = self
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        profileNavigationController = storyboard.instantiateViewControllerWithIdentifier("TweetsNavigationController")
+        profileViewController = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController")
         tweetsNavigationController = storyboard.instantiateViewControllerWithIdentifier("TweetsNavigationController")
         mentionsNavigationController = storyboard.instantiateViewControllerWithIdentifier("TweetsNavigationController")
         
-        viewControllers.append(profileNavigationController)
+        viewControllers.append(profileViewController)
         viewControllers.append(tweetsNavigationController)
         viewControllers.append(mentionsNavigationController)
         
