@@ -12,25 +12,37 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var storyboard = UIStoryboard(name: "Main", bundle: nil)
+    
+    //var storyboard = UIStoryboard(name: "Main", bundle: nil)
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let hamburgerViewController = window?.rootViewController as! HamburgerViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
         
         if User.currentUser != nil {
             // Go to the logged in screen
             print("Current user detected: \(User.currentUser?.name)")
+
+            let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
+            menuViewController.hamburgerViewController = hamburgerViewController
             
+            hamburgerViewController.menuViewController = menuViewController
+            
+            /*
             var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsNavigationController") as UIViewController
 
             window?.rootViewController = vc
+            */
         }
         return true
     }
     
     func userDidLogout() {
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
         var vc = storyboard.instantiateInitialViewController() as UIViewController!
         window?.rootViewController = vc
     }

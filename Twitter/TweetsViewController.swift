@@ -19,6 +19,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "fetchTweets", name: userDidLoginNotification, object: nil)
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
