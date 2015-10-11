@@ -18,6 +18,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "fetchTweets", name: userDidLoginNotification, object: nil)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -40,33 +41,14 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func fetchTweets() {
-        /**
-        if User.currentUser == nil {
-            TwitterClient.sharedInstance.loginWithCompletion() {
-                (user: User?, error: NSError?) in
-                if user != nil {
-                    TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: {(tweets, error) -> () in
-                        self.tweets = tweets
-                        self.tableView.reloadData()
-                        self.refreshControl.endRefreshing()
-                    })
-                }
-            }
-        } else {
+        if User.currentUser != nil {
+            print("inside fetchTweets")
             TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: {(tweets, error) -> () in
                 self.tweets = tweets
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             })
         }
-        **/
-        
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: {(tweets, error) -> () in
-            self.tweets = tweets
-            self.tableView.reloadData()
-            self.refreshControl.endRefreshing()
-        })
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,7 +78,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         User.currentUser?.logout()
     }
 
-    
     @IBAction func onNew(sender: AnyObject) {
         self.performSegueWithIdentifier("newTweetSegue", sender: self)
     }

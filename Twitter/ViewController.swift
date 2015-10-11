@@ -22,13 +22,18 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onLogin(sender: AnyObject) {
-        TwitterClient.sharedInstance.loginWithCompletion() {
-            (user: User?, error: NSError?) in
-            if user != nil {
-                // perform segue
-                self.performSegueWithIdentifier("loginSegue", sender: self)
-            } else {
-                //handle error
+        print("login button pressed")
+        if User.currentUser == nil {
+            TwitterClient.sharedInstance.loginWithCompletion() {
+                (user: User?, error: NSError?) in
+                if user != nil {
+                    // perform segue
+                    NSNotificationCenter.defaultCenter().postNotificationName(userDidLoginNotification, object: nil)
+                    self.performSegueWithIdentifier("loginSegue", sender: self)
+                } else {
+                    print("user is nil :(")
+                    //handle error
+                }
             }
         }
     }
