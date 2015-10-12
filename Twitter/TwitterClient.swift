@@ -34,6 +34,17 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         })
     }
     
+    func getUserProfile(params: NSDictionary?, completion: (user: User?, error: NSError?) -> ()){
+        GET("1.1/users/show.json", parameters: params, success: { (operation:
+            AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            var user = User(dictionary:response as! NSDictionary)
+            completion(user: user, error: nil)
+        }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            print("error getting user profile")
+            completion(user:nil, error:error)
+        })
+    }
+    
     func postTweetWithParams(params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()){
         self.POST("1.1/statuses/update.json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             var status = Tweet(dictionary: response as! NSDictionary)

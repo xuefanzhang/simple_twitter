@@ -8,13 +8,18 @@
 
 import UIKit
 
+protocol TweetCellDelegate {
+    func didTapAvatarForUser(user: User?)
+}
+
 class TweetCell: UITableViewCell {
-    
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    
+    var delegate: TweetCellDelegate?
     
     var tweet: Tweet! {
         didSet {
@@ -22,7 +27,15 @@ class TweetCell: UITableViewCell {
             profileImageView.setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!))
             createdAtLabel.text = tweet.elapsedString
             contentLabel.text = tweet.text
+            
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("profileImageTapped:"))
+            profileImageView.userInteractionEnabled = true
+            profileImageView.addGestureRecognizer(tapGestureRecognizer)
         }
+    }
+    
+    func profileImageTapped(sender: UITapGestureRecognizer) {
+        delegate?.didTapAvatarForUser(tweet.user)
     }
     
     override func awakeFromNib() {

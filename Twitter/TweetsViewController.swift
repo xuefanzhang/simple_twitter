@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TweetCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -64,6 +64,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
         
         cell.tweet = tweets[indexPath.row]
+        cell.delegate = self
         
         return cell
     }
@@ -81,5 +82,13 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
 
     @IBAction func onNew(sender: AnyObject) {
         self.performSegueWithIdentifier("newTweetSegue", sender: self)
+    }
+    
+    // MARK: TweetCellDelegate
+    
+    func didTapAvatarForUser(user: User?) {
+        let profileVC = storyboard?.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+        profileVC.handleName = user?.screenname
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
 }

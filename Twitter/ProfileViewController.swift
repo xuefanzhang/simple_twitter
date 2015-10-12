@@ -17,10 +17,32 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var followingNumberLabel: UILabel!
     @IBOutlet weak var followerNumberLabel: UILabel!
     
+    var handleName: String? {
+        didSet {
+            if isViewLoaded() {
+                handleLabel.text = handleName
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        handleLabel.text = handleName
         // Do any additional setup after loading the view.
+        print("inside profile viewDidLoad")
+        let params: NSDictionary = ["screen_name": handleName!]
+        TwitterClient.sharedInstance.getUserProfile(params, completion: { (user, error) -> () in
+            if user != nil {
+                print(user)
+                self.nameLabel.text = user!.name
+                self.tweetNumberLabel.text = String(user!.numberOfTweets!)
+                self.followingNumberLabel.text = String(user!.numberOfFollowing!)
+                self.followerNumberLabel.text = String(user!.numberOfFollowers!)
+                return
+            } else {
+                print(error)
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {

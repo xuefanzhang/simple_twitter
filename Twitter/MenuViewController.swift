@@ -60,6 +60,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
+        if let contentViewController = viewControllers[indexPath.row] as? ProfileViewController {
+            contentViewController.handleName = User.currentUser?.screenname
+        }
+        
         hamburgerViewController?.contentViewController = viewControllers[indexPath.row]
     }
 

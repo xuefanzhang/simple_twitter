@@ -18,14 +18,25 @@ class User: NSObject {
     var screenname: String?
     var profileImageUrl: String?
     var tagline: String?
+    var numberOfTweets: Int?
+    var numberOfFollowing: Int?
+    var numberOfFollowers: Int?
     var dictionary: NSDictionary
+    
+    override var description: String {
+        return "name: \(name!)\n screenname: \(screenname!)"
+    }
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
+        print(dictionary)
         name = dictionary["name"] as? String
         screenname = dictionary["screen_name"] as? String
         profileImageUrl = dictionary["profile_image_url"] as? String
         tagline = dictionary["description"] as? String
+        numberOfTweets = dictionary["statuses_count"] as? Int
+        numberOfFollowers = dictionary["followers_count"] as? Int
+        numberOfFollowing = dictionary["friends_count"] as? Int
     }
     
     func logout() {
