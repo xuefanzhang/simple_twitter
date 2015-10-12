@@ -35,6 +35,7 @@ class ProfileViewController: UIViewController {
             if user != nil {
                 print(user)
                 self.nameLabel.text = user!.name
+                self.profileImageView.setImageWithURL(NSURL(string: user!.profileImageUrl!))
                 self.tweetNumberLabel.text = String(user!.numberOfTweets!)
                 self.followingNumberLabel.text = String(user!.numberOfFollowing!)
                 self.followerNumberLabel.text = String(user!.numberOfFollowers!)

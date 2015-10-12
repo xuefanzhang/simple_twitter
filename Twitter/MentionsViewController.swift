@@ -8,18 +8,59 @@
 
 import UIKit
 
-class MentionsViewController: UIViewController {
+class MentionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
+    var tweets: [Tweet]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
+        
+        fetchTweets()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func fetchTweets() {
+        if User.currentUser != nil {
+            TwitterClient.sharedInstance.mentionsWithParams(nil, completion: {(tweets, error) -> () in
+                self.tweets = tweets
+                self.tableView.reloadData()
+            })
+        }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tweets != nil {
+            return tweets!.count
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("MentionCell", forIndexPath: indexPath) as! MentionCell
+        
+        cell.tweet = tweets[indexPath.row]
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let controller = storyboard.instantiateViewControllerWithIdentifier("TweetViewController") as! TweetViewController
+        controller.tweet = self.tweets![indexPath.row]
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+
     
 
     /*
