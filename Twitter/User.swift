@@ -32,7 +32,8 @@ class User: NSObject {
         print(dictionary)
         name = dictionary["name"] as? String
         screenname = dictionary["screen_name"] as? String
-        profileImageUrl = dictionary["profile_image_url"] as? String
+        let profileImageStr = dictionary["profile_image_url"] as? NSString
+        profileImageUrl = profileImageStr?.stringByReplacingOccurrencesOfString("_normal", withString: "")
         tagline = dictionary["description"] as? String
         numberOfTweets = dictionary["statuses_count"] as? Int
         numberOfFollowers = dictionary["followers_count"] as? Int
